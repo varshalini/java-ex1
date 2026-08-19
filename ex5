@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+interface Calculator
+{
+    int add(int n1, int n2);
+    int sub(int n1, int n2);
+    int mul(int n1, int n2);
+    int div(int n1, int n2);
+}
+
+class Operation implements Calculator
+{
+    public int add(int n1, int n2)
+    {
+        return n1 + n2;
+    }
+
+    public int sub(int n1, int n2)
+    {
+        return n1 - n2;
+    }
+
+    public int mul(int n1, int n2)
+    {
+        return n1 * n2;
+    }
+
+    public int div(int n1, int n2)
+    {
+        return n1 / n2;
+    }
+}
+
+class Ex5
+{
+    public static void main(String arg[])
+    {
+        Scanner sc = new Scanner(System.in);
+        Operation o = new Operation();
+
+        System.out.print("Enter first number: ");
+        int n1 = sc.nextInt();
+
+        System.out.print("Enter second number: ");
+        int n2 = sc.nextInt();
+
+        System.out.println("Choose an operation:");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.print("Enter your choice (1-4): ");
+        int choice = sc.nextInt();
+
+        switch (choice)
+        {
+            case 1:
+                System.out.println("Addition: " + o.add(n1, n2));
+                break;
+            case 2:
+                System.out.println("Subtraction: " + o.sub(n1, n2));
+                break;
+            case 3:
+                System.out.println("Multiplication: " + o.mul(n1, n2));
+                break;
+            case 4:
+                if (n2 != 0)
+                    System.out.println("Division: " + o.div(n1, n2));
+                else
+                    System.out.println("Error: Division by zero is not allowed.");
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        sc.close();
+    }
+}
